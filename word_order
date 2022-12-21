@@ -1,0 +1,11 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+words = {}
+n = int(input())
+for i in range(n):
+    word = input()
+    if word not in words:
+        words[word] = 0
+    words[word] += 1
+print(len(words))
+for key in words:
+    print(words[key], end=' ')
