@@ -7,9 +7,7 @@ class Solution:
         right = 0
         while right < len(nums):
             if nums[left] == 0 and nums[right] != 0:
-                temp = nums[right]
-                nums[right] = nums[left]
-                nums[left] =temp
+                nums[right], nums[left] = nums[left], nums[right]
                 right += 1
                 left += 1
             elif nums[left] == 0 and nums[right] == 0:
