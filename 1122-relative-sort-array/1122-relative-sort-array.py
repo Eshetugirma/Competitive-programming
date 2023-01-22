@@ -3,11 +3,11 @@ class Solution:
         ans = []
         temp = []
         # ==> first i try to sort arr1 with respect to element in arr2
-        for num_in_arr2 in arr2:
-            for num_in_arr1 in arr1:
-                if num_in_arr1 == num_in_arr2:
-                    ans.append(num_in_arr1)
-        # ==> now i'm recordind element that are not in arr2 in to temporary container temp
+        for i in range(len(arr2)):
+            for j in arr1:
+                if arr2[i] == j:
+                    ans.append(j)
+        # ==> now i'm recordind element that are not in arr2 in temporary containor temp
         for num in arr1:
             if num not in arr2:
                 temp.append(num)
