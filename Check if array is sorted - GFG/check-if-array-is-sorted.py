@@ -3,11 +3,13 @@
 class Solution:
     def arraySortedOrNot(self, arr, n):
         # code here
-        for i in range(n-1):
+        i = 0
+        while i < n-1:
             if arr[i]>arr[i+1]:
                 return 0
+            i +=1
         return 1
-            
+        
 
 #{ 
  # Driver Code Starts
