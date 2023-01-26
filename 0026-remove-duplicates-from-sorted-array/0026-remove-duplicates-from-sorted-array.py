@@ -1,11 +1,9 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        pointer = 0
-        while pointer < len(nums)-1:
-            if nums[pointer] == nums[pointer+1]:
-                nums.remove(nums[pointer])
-            else:
-                pointer +=1
-        print(nums)
-        
+        place_holder = 1
+        for seeker in range(len(nums)-1):
+            if nums[seeker] != nums[seeker+1]:
+                nums[place_holder] = nums[seeker+1]
+                place_holder += 1
+        return place_holder
         
