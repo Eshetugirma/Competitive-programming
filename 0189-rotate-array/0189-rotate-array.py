@@ -3,6 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        for i in range(k):
-            nums.insert(0,nums.pop())
+        #===>>>>> insert the last element at zero index k times
+        for i in range(k%len(nums)):nums.insert(0,nums.pop())
         
