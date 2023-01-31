@@ -27,6 +27,7 @@ class Solution:
         # ==>>> finally connect the neccessery node
         temp_prev.next = prev
         temp_curr.next = current_node
+        #===>>>> if my head may changed this update head to new head that is equal to right position
         if left == 1:
             head = prev
         return head
