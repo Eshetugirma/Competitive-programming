@@ -1,23 +1,16 @@
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        summ = 0
+        window = 0
         left = 0
-        right = 0
         minimal = len(nums) + 1
-        while right<(len(nums)):
-            # print(summ)
-            if summ < target:
-                summ += nums[right]
-                right += 1
-            else:
-                # print(right,left)
-                minimal = min(minimal,right-left)
-                summ -= nums[left]
+        #===>>> for every sum in my window check if greater or equal to target
+        for right in range(len(nums)):
+            window += nums[right]
+            #==>>then update minimum length of window and move the left
+            while window >= target:
+                minimal = min(minimal,right-left+1)
+                window -= nums[left]
                 left += 1
-        while summ >= target:
-            minimal = min(minimal,right-left)
-            summ -= nums[left]
-            left += 1
         if minimal > len(nums):
             return 0
         return minimal
