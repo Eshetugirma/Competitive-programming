@@ -6,13 +6,8 @@ class Solution:
         for i in range(len(speed)):
             #==>> calculate total time needed from every position 
             time.append((target-position[i])/speed[i])
-        stack = [time[0]]
-        i = 1
-        #==>> form monotonically increasing order of time needed
-        while i < len(time):
-            if stack and stack[-1] <= time[i]:
-                stack.pop()
-            else:
-                stack.append(time[i])
-                i += 1  
-        return len(stack)
+            #==>> form monotonically increasing order of by time needed
+            while len(time) >=2 and time[-1] >= time[-2]:
+                time[-2] = time[-1]
+                time.pop()
+        return len(time)
