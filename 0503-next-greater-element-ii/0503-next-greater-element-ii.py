@@ -1,15 +1,11 @@
 class Solution:
     def nextGreaterElements(self, nums: List[int]) -> List[int]:
-        num = nums + nums
-        stack = []
-        #==>>> create num which contain double of nums as circled 
-        for i in range(len(nums)):
-            stack.append(nums[i])
-            for j in range(i,len(num)):
-                if stack[i] < num[j]:
-                    stack[i] = num[j]
-                    break
-            if stack[i] == num[i]:
-                stack[i] = -1
-        return stack
-                 
+        stack,ans = [],[-1]*len(nums)
+        #==>> this is the optimal solution by monotonik stack 
+        for ind in range(len(nums)*2):
+            i = ind%len(nums)
+            #==>> while stack and num at index of top stack is greater than at current index then update ans to nums at current index
+            while stack and nums[stack[-1]] < nums[i]:
+                ans[stack.pop()] = nums[i]
+            stack.append(i)
+        return ans
