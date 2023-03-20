@@ -1,3 +1,36 @@
+# class Solution:
+#     def minWindow(self, s: str, t: str) -> str:
+        # check = Counter(t)
+        # target = Counter(t)
+        # window = defaultdict(int)
+        # temp = defaultdict(int)
+    
+        # target_count = sum(target.values())
+        # count = 0
+        # left = 0
+        # for right in range(len(s)):
+        #     if s[right] in target and s[right] not in temp:
+        #         target[s[right]] -= 1
+        #         temp[s[right]] += 1
+        #         count += 1
+        #         if target[s[right]] == 0:
+        #             del target[s[right]]
+        #     print(target)
+        #     while left < right and () :
+        #         window[right-left] = s[left:right+1]
+        #         print(count,target_count)
+        #         if s[left] in check:
+        #             target[s[left]] += 1
+        #             count -= 1
+        #             temp[s[right]] -= 1
+        #             if temp[s[right]] == 0:
+        #                 del temp[s[right]]
+        #         left += 1
+        # pointer = len(s)
+        # for i in window.keys():
+        #     pointer = min(pointer,i)
+        # return  window[pointer]
+               
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         if t == "":
