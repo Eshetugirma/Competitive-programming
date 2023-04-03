@@ -7,6 +7,8 @@ class Solution:
             while start*start <= curr:
                 while not curr%start :
                     if left <= start <= right and ( start > stack[-1] or not stack):
+                        if stack and start - stack[-1] <= 2:
+                            return [stack[-1],start]
                         stack.append(start)
                     curr //= start
                 if start == 2:
@@ -15,6 +17,8 @@ class Solution:
                     start += 2
             if curr != 1 and left <= curr <= right:
                 if not stack or (curr > stack[-1]):
+                    if stack and curr - stack[-1] <= 2:
+                        return [stack[-1],curr]
                     stack.append(curr)
         dic = defaultdict(list)
         mn = right+1
