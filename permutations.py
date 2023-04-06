@@ -3,20 +3,20 @@ class Solution:
 
         ans = []
         def backtrack(visited,temp):
-
+            #==>>> copy every formed permutation
             if len(temp) == len(nums):
                 ans.append(temp[::])
-                return 
-            for i in nums:
-                if i in visited:
+                return               
+            for i in range(len(nums)):
+                #==>>> if element at index is already used pass over it 
+                if (visited & (1 << i)):
                     continue
-                else:
-                    temp.append(i)
-                    visited.add(i)
-                    backtrack(visited,temp)
-                    temp.pop()
-                    visited.remove(i)
-            return 
-
-        backtrack(set(),[])
+                #==>>> append element at index and make it visited
+                temp.append(nums[i])
+                visited |= 1 << i
+                backtrack(visited,temp)
+                #===>>>> after used pop temp and delete from visited
+                temp.pop()
+                visited &= ~( 1 << i ) 
+        backtrack(0,[])
         return ans
