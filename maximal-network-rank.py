@@ -7,7 +7,6 @@ class Solution:
             dic[roads[i][1]].add(roads[i][0])
             count[roads[i][0]] += 1
             count[roads[i][1]] += 1
-        print(count)
         max1 = float("-inf")
         for key in range(n):
             for key2 in range(n):
