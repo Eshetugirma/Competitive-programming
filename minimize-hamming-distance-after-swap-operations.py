@@ -10,22 +10,9 @@ class Solution:
             return find(parent[x])
         #===>>> this is the union function
         def union(x,y):
-            parent1 = find(x)
-            parent2 = find(y)
-            if parent1 == parent2: return
-            if rank[parent1] < rank[parent2]:
-                parent[parent1] = parent2
-            elif rank[parent1] < rank[parent2]:
-                parent[parent2] = parent1
-            else:
-                parent[parent2] = parent1
-                rank[parent1] += 1
-        #===>>> define parent by them selfs and give rank of one for all index allowed
-        for pair in allowedSwaps:
-            parent[pair[0]] = pair[0]
-            parent[pair[1]] = pair[1]
-            rank[pair[0]] = 1
-            rank[pair[1]] = 1
+            parent.setdefault(x,x)
+            parent.setdefault(y,y)
+            parent[find(x)] = parent[find(y)]
         #==>>>> here i call my union function to connect 
         for pair in allowedSwaps:
             union(pair[0],pair[1])
