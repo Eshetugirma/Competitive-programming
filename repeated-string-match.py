@@ -18,6 +18,6 @@ class Solution:
                     j -= 1
             else:
                 return -1
-        print(i)
-        if not j and not count: return -1
+        # print(i)
+        if not j: return -1
         return count if not i else count + 1
