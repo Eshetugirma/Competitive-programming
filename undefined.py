@@ -11,8 +11,9 @@ class Solution:
         seen = set(restricted)
         seen.add(0)
         count = 1
+        
         while que:
-            curr = que.popleft()
+            curr = que.pop()
             for child in graph[curr]:
                 if child not in seen:
                     # print(child)
