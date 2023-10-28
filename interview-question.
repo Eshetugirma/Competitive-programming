@@ -1,0 +1,27 @@
+def get_schedule(user_stats):
+	if not user_stats:
+		return []
+
+	# get a list timeline represented by (time, whether start/end, name)
+	timeline = [(start, 0, name) for start, end, name in user_stats]
+	timeline += [(end, 1, name) for start, end, name in user_stats]
+	timeline.sort()
+
+	res = []
+	active_users = set()
+	previous_stop = timeline[0][0]
+	for time, type, name in timeline:
+		if previous_stop < time and len(active_users) > 0:
+			res.append([previous_stop, time, list(active_users)])
+		if type == 0:
+			active_users.add(name)
+		else:
+			active_users.remove(name)
+		previous_stop = time
+	return res
+
+def print_schedule(schedule):
+	for start, end, active_users in schedule:
+		print('{} - {} {}'.format(start, end, ','.join(active_users)))
+
+print_schedule(get_schedule([[3,8,'Matt'], [7,10,'Julia'], [3,6,'Me']]))
