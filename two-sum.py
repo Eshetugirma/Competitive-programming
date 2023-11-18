@@ -4,8 +4,9 @@ class Solution:
         for i in range(len(nums)):
             curr = target - nums[i] 
             if curr != nums[i] and curr in sets:
-                print(nums[i])
+                # print(nums[i])
                 return [i,nums.index(curr)]
             elif curr in sets:
                 temp = [i,nums.index(curr)]
+                
         return temp
