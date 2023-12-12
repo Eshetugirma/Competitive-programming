@@ -7,8 +7,8 @@ class Solution:
         for val1,val2 in operations:
             nums[memo[val1]] = val2
             curr_index = memo[val1]
-            del memo[val1]
+            # del memo[val1]
             memo[val2] = curr_index
-            
+
         return nums
         
