@@ -11,9 +11,9 @@ class Solution:
             else:
                 ans.append((window[k//2]+window[k//2-1])/2)
             if i == (len(nums)-k):
-                break
+                break 
             window.remove(nums[i])
             window.add(nums[k+i])
-        return ans
+        return ans 
 
         
