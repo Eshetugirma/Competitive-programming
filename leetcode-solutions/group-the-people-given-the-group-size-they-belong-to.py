@@ -7,11 +7,14 @@ class Solution:
         indexed.sort()
         ans = []
         curr = []
+        count = 0
         for i in range(n):
             curr.append(indexed[i][1])
-            if len(curr) == indexed[i][0]:
+            count += 1
+            if count == indexed[i][0]:
                 ans.append(curr)
                 curr = []
+                count = 0
         return ans
 
 
