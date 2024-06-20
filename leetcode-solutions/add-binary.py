@@ -1,5 +1,6 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
+        if int(a)+int(b) == 0 :return "0"
         a = '0'*(10**4-len(a)) + a
         b = '0'*(10**4-len(b)) + b
         answer = ['0']*10**4
@@ -17,4 +18,4 @@ class Solution:
         # print(answer)
         res = ''.join(answer)
         res = res.lstrip('0')
-        return '0' if not res else res
+        return res
