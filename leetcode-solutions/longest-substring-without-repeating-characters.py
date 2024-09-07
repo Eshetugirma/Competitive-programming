@@ -1,14 +1,16 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        window = defaultdict(int)
-        left,ans = 0, 0
-        for right in range(len(s)):
-            window[s[right]] += 1
-            while len(window) < (right-left+1):
-                window[s[left]] -= 1
-                
-                if not window[s[left]]: 
-                    del window[s[left]]
+        hashmap = defaultdict(int)
+        left = 0
+        max_length = 0
+        for i in range(len(s)):
+            hashmap[s[i]] += 1
+            while hashmap[s[i]] > 1:
+                hashmap[s[left]] -= 1
+                if not hashmap[s[left]]:
+                    del hashmap[s[left]]
                 left += 1
-            ans = max(ans,right-left+1)
-        return ans
+            max_length = max(max_length,i-left+1)
+        return max_length
+                
+
