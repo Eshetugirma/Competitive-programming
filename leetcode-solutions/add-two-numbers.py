@@ -5,26 +5,50 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        curr = l1
-        temp1 = ""
-        temp2 = ""
-        #==>>> hold as string elements in l1
-        while curr:
-            temp1 += str(curr.val)
-            curr = curr.next
-        curr = l2
-        #===>>> hold as string elements in l2
-        while curr:
-            temp2 += str(curr.val)
-            curr = curr.next
-        temp1 = temp1[::-1]
-        temp2 = temp2[::-1]
-        #==>>> integer sum of two string
-        sums = str(int(temp1)+int(temp2))[::-1]
-        ans = ListNode()
-        curr = ans
-        #==>>> constract linked list from sum of both list
-        for i in sums:
-            curr.next = ListNode(i)
-            curr = curr.next
-        return ans.next
+        
+        carry = 0
+        sum_list = ListNode(0)
+        t = sum_list
+        head = t
+        while l1 and l2:
+            curr = l1.val + l2.val + carry
+            if curr > 9:
+                carry = 1
+                curr %= 10
+            else:
+                carry = 0
+            sum_list.next = ListNode(curr)
+            sum_list =sum_list.next
+            l1 = l1.next
+            l2 = l2.next
+
+
+        while l1:
+            curr = l1.val + carry
+            if curr > 9:
+                carry = 1
+                curr %= 10
+            else:
+                carry = 0
+            sum_list.next = ListNode(curr)
+            sum_list =sum_list.next
+            l1 = l1.next
+
+
+        while l2:
+            curr = l2.val + carry
+            if curr > 9:
+                carry = 1
+                curr %= 10
+            else:
+                carry = 0
+            sum_list.next = ListNode(curr)
+            sum_list =sum_list.next
+            l2 = l2.next
+
+
+        if carry:
+            sum_list.next = ListNode(1)
+
+        return head.next
+            
