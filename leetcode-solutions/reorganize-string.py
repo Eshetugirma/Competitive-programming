@@ -5,8 +5,11 @@ class Solution:
         
         for key,val in count.items():
             heappush(heap,[-val,key])
+
         stack = []
+
         while len(heap) > 1:
+            
             a,b = heappop(heap),heappop(heap)
             if stack and stack[-1] == a[1]:
                 stack.append(b[1])
